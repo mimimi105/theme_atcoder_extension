@@ -1,6 +1,9 @@
 // 設定管理
 export const CONFIG_KEY = 'atcoder_theme_config';
 
+// 環境設定
+export const ENV = 'dev'; // 'dev' or 'prod'
+
 export const THEME_OPTIONS = {
     AUTO: 'auto',
     HALLOWEEN: 'halloween',

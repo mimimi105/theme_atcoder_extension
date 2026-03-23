@@ -243,6 +243,9 @@ const springTheme = {
 // 設定管理
 const CONFIG_KEY = 'atcoder_theme_config';
 
+// 環境設定
+const ENV = 'dev'; // 'dev' or 'prod'
+
 const THEME_OPTIONS = {
     AUTO: 'auto',
     HALLOWEEN: 'halloween',
@@ -411,6 +414,92 @@ class ThemeManager {
         return theme;
     }
 
+    // テスト用のステータステーブルを作成
+    createTestTable() {
+        // 既存のテストテーブルがあれば削除
+        const existing = document.getElementById('test-status-table');
+        if (existing) {
+            existing.remove();
+        }
+
+        // テーブルを探す（AtCoderの提出一覧テーブル）
+        let targetTable = document.querySelector('table.table');
+
+        if (!targetTable) {
+            // テーブルがない場合は新規作成
+            const container = document.createElement('div');
+            container.id = 'test-status-table';
+            container.style.cssText = 'margin: 20px; padding: 20px; background: #f5f5f5;';
+
+            targetTable = document.createElement('table');
+            targetTable.className = 'table table-bordered table-striped';
+            targetTable.style.cssText = 'width: 100%; background: white;';
+
+            container.appendChild(targetTable);
+            document.body.insertBefore(container, document.body.firstChild);
+        }
+
+        // テーブルにテストケースを追加
+        const statuses = ['WA', 'TLE', 'MLE', 'RE', 'CE', 'AC'];
+        const tbody = targetTable.querySelector('tbody') || targetTable;
+
+        statuses.forEach((status, index) => {
+            const tr = document.createElement('tr');
+
+            // 提出時刻（ダミー）
+            const td1 = document.createElement('td');
+            td1.textContent = '2024-03-23 12:00:00';
+            tr.appendChild(td1);
+
+            // 問題名（ダミー）
+            const td2 = document.createElement('td');
+            td2.textContent = `テスト問題 ${index + 1}`;
+            tr.appendChild(td2);
+
+            // ユーザー（ダミー）
+            const td3 = document.createElement('td');
+            td3.textContent = 'test_user';
+            tr.appendChild(td3);
+
+            // 言語（ダミー）
+            const td4 = document.createElement('td');
+            td4.textContent = 'C++ (GCC 9.2.1)';
+            tr.appendChild(td4);
+
+            // 得点（ダミー）
+            const td5 = document.createElement('td');
+            td5.textContent = status === 'AC' ? '100' : '0';
+            tr.appendChild(td5);
+
+            // コード長（ダミー）
+            const td6 = document.createElement('td');
+            td6.textContent = '1234 Byte';
+            tr.appendChild(td6);
+
+            // ステータス
+            const td7 = document.createElement('td');
+            const statusSpan = document.createElement('span');
+            statusSpan.className = status === 'AC' ? 'label label-success' : 'label label-warning';
+            statusSpan.textContent = status;
+            td7.appendChild(statusSpan);
+            tr.appendChild(td7);
+
+            // 実行時間（ダミー）
+            const td8 = document.createElement('td');
+            td8.textContent = status === 'TLE' ? '2000 ms' : '123 ms';
+            tr.appendChild(td8);
+
+            // メモリ（ダミー）
+            const td9 = document.createElement('td');
+            td9.textContent = status === 'MLE' ? '2048 KB' : '512 KB';
+            tr.appendChild(td9);
+
+            tbody.appendChild(tr);
+        });
+
+        console.log('✅ テストケースを作成しました');
+    }
+
     // 設定パネルを作成
     createSettingsPanel() {
         // 既存のパネルがあれば削除
@@ -421,6 +510,22 @@ class ThemeManager {
 
         const panel = document.createElement('div');
         panel.id = 'atcoder-theme-settings';
+
+        const devButtonHTML = ENV === 'dev' ? `
+            <button id="create-test-btn" style="
+                width: 100%;
+                padding: 8px;
+                margin-top: 10px;
+                background: #4CAF50;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 12px;
+                font-weight: bold;
+            ">テストケースを作成</button>
+        ` : '';
+
         panel.innerHTML = `
             <style>
                 #atcoder-theme-settings {
@@ -448,6 +553,9 @@ class ThemeManager {
                     border-radius: 4px;
                     font-size: 12px;
                 }
+                #create-test-btn:hover {
+                    background: #45a049;
+                }
             </style>
             <label for="theme-selector">テーマ設定:</label>
             <select id="theme-selector">
@@ -456,6 +564,7 @@ class ThemeManager {
                 <option value="spring">春（桜）</option>
                 <option value="off">オフ</option>
             </select>
+            ${devButtonHTML}
         `;
 
         document.body.appendChild(panel);
@@ -477,6 +586,23 @@ class ThemeManager {
             // ページをリロード（装飾を再適用するため）
             window.location.reload();
         });
+
+        // devモードの場合、テストボタンのイベントリスナーを追加
+        if (ENV === 'dev') {
+            const testBtn = document.getElementById('create-test-btn');
+            if (testBtn) {
+                testBtn.addEventListener('click', () => {
+                    this.createTestTable();
+                    // 装飾を再適用
+                    setTimeout(() => {
+                        const decorator = window.atcoderDecorator;
+                        if (decorator) {
+                            decorator.applyDecoration();
+                        }
+                    }, 100);
+                });
+            }
+        }
     }
 }
 
@@ -554,6 +680,9 @@ class Decorator {
     function init() {
         const themeManager = new ThemeManager();
         const decorator = new Decorator(themeManager);
+
+        // グローバルに公開（テストボタンから使えるように）
+        window.atcoderDecorator = decorator;
 
         // テーマを適用
         themeManager.applyTheme();

@@ -10,6 +10,9 @@ import { Decorator } from './decorator.js';
         const themeManager = new ThemeManager();
         const decorator = new Decorator(themeManager);
 
+        // グローバルに公開（テストボタンから使えるように）
+        window.atcoderDecorator = decorator;
+
         // テーマを適用
         themeManager.applyTheme();
 
