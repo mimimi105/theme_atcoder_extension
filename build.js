@@ -7,11 +7,22 @@ const { minify } = require("terser");
 // ファイルを読み込む順序
 const files = ["src/themes/halloween.js", "src/themes/spring.js", "src/config.js", "src/themeManager.js", "src/decorator.js", "src/main.js"];
 
+// config.jsからENVを読み取る
+function getEnv() {
+    const configPath = path.join(__dirname, "src/config.js");
+    const configContent = fs.readFileSync(configPath, "utf8");
+    const envMatch = configContent.match(/export\s+const\s+ENV\s+=\s+['"](\w+)['"]/);
+    return envMatch ? envMatch[1] : 'prod';
+}
+
+const ENV = getEnv();
+const scriptName = ENV === 'dev' ? 'Theme-AtCoder - dev' : 'Theme-AtCoder';
+
 // ユーザースクリプトヘッダー
 const header = `// ==UserScript==
-// @name         Theme-AtCoder
+// @name         ${scriptName}
 // @namespace    https://github.com/mimimi105/theme_atcoder_extension
-// @version      2.0
+// @version      2.0.1
 // @description  AtCoderのWAやTLEの表示をテーマ別に装飾する拡張機能（ハロウィン、春など）
 // @author       mimimi105
 // @match        https://atcoder.jp/*
