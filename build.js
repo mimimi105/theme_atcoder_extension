@@ -9,7 +9,7 @@ const files = ["src/themes/halloween.js", "src/themes/spring.js", "src/config.js
 
 // ユーザースクリプトヘッダー
 const header = `// ==UserScript==
-// @name         Halloween-AtCoder
+// @name         Theme-AtCoder
 // @namespace    https://github.com/mimimi105/theme_atcoder_extension
 // @version      2.0
 // @description  AtCoderのWAやTLEの表示をテーマ別に装飾する拡張機能（ハロウィン、春など）
