@@ -2,7 +2,7 @@
 export const CONFIG_KEY = 'atcoder_theme_config';
 
 // 環境設定
-export const ENV = 'dev'; // 'dev' or 'prod'
+export const ENV = 'prod'; // 'dev' or 'prod'
 
 export const THEME_OPTIONS = {
     AUTO: 'auto',

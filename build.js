@@ -2,6 +2,7 @@
 
 const fs = require("fs");
 const path = require("path");
+const { minify } = require("terser");
 
 // ファイルを読み込む順序
 const files = ["src/themes/halloween.js", "src/themes/spring.js", "src/config.js", "src/themeManager.js", "src/decorator.js", "src/main.js"];
@@ -9,7 +10,7 @@ const files = ["src/themes/halloween.js", "src/themes/spring.js", "src/config.js
 // ユーザースクリプトヘッダー
 const header = `// ==UserScript==
 // @name         Halloween-AtCoder
-// @namespace    https://github.com/mimimi105/halloween_atcoder_extension
+// @namespace    https://github.com/mimimi105/theme_atcoder_extension
 // @version      2.0
 // @description  AtCoderのWAやTLEの表示をテーマ別に装飾する拡張機能（ハロウィン、春など）
 // @author       mimimi105
@@ -21,10 +22,11 @@ const header = `// ==UserScript==
 `;
 
 // ビルド処理
-function build() {
+async function build() {
     let output = header;
-    output += "(function() {\n";
-    output += "'use strict';\n\n";
+    let code = "";
+    code += "(function() {\n";
+    code += "'use strict';\n\n";
 
     // 各ファイルの内容を読み込んで結合
     for (const file of files) {
@@ -41,12 +43,38 @@ function build() {
         content = content.replace(/import\s+{[^}]+}\s+from\s+['"][^'"]+['"];?\s*/g, "");
         content = content.replace(/import\s+\*\s+as\s+\w+\s+from\s+['"][^'"]+['"];?\s*/g, "");
 
-        output += `// ========== ${file} ==========\n`;
-        output += content;
-        output += "\n\n";
+        code += `// ========== ${file} ==========\n`;
+        code += content;
+        code += "\n\n";
     }
 
-    output += "})();\n";
+    code += "})();\n";
+
+    // 圧縮処理（オプション）
+    const shouldMinify = process.argv.includes('--minify');
+    if (shouldMinify) {
+        console.log("Minifying...");
+        const result = await minify(code, {
+            compress: {
+                dead_code: true,
+                drop_console: false,  // console.logを残す
+                drop_debugger: true,
+            },
+            mangle: false,  // UserScriptなので変数名は保持
+            format: {
+                comments: false,
+            }
+        });
+
+        if (result.error) {
+            throw result.error;
+        }
+
+        output += result.code;
+        console.log("✓ Minification completed");
+    } else {
+        output += code;
+    }
 
     // .user.jsファイルに書き込み
     const outputPath = path.join(__dirname, ".user.js");
@@ -57,9 +85,7 @@ function build() {
 }
 
 // ビルド実行
-try {
-    build();
-} catch (error) {
+build().catch(error => {
     console.error("Build failed:", error);
     process.exit(1);
-}
+});

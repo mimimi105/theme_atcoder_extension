@@ -3,8 +3,12 @@
     "version": "2.0.0",
     "description": "AtCoderのWAやTLEの表示をテーマ別に装飾する拡張機能",
     "scripts": {
-        "build": "node build.js"
+        "build": "node build.js",
+        "build:min": "node build.js --minify"
     },
     "author": "mimimi105",
-    "license": "MIT"
+    "license": "MIT",
+    "devDependencies": {
+        "terser": "^5.36.0"
+    }
 }
