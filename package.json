@@ -1,6 +1,6 @@
 {
     "name": "halloween-atcoder-extension",
-    "version": "2.0.1",
+    "version": "2.0.2",
     "description": "AtCoderのWAやTLEの表示をテーマ別に装飾する拡張機能",
     "scripts": {
         "build": "node build.js",
