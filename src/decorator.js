@@ -35,13 +35,11 @@ export class Decorator {
             // 右クリックイベントは常に追加（テーマオフの時も設定変更できるように）
             if (!element.hasAttribute('data-context-menu-added')) {
                 element.addEventListener('contextmenu', (event) => {
-                    console.log('右クリックイベント発火:', event.target.textContent);
                     event.preventDefault();
                     event.stopPropagation();
                     this.themeManager.showSettingsPanel(event.clientX, event.clientY);
                 });
                 element.setAttribute('data-context-menu-added', 'true');
-                console.log('右クリックリスナー追加:', text);
             }
         });
     }

@@ -47,7 +47,7 @@ export class ThemeManager {
     // 自動でテーマを選択
     getAutoTheme() {
         // 各テーマの期間をチェック
-        for (const [key, theme] of Object.entries(this.themes)) {
+        for (const theme of Object.values(this.themes)) {
             if (theme.period && this.isInPeriod(theme.period)) {
                 return theme;
             }
@@ -194,8 +194,6 @@ export class ThemeManager {
 
             tbody.appendChild(tr);
         });
-
-        console.log('✅ テストケースを作成しました');
     }
 
     // 設定パネルを作成
@@ -385,10 +383,8 @@ export class ThemeManager {
 
     // 設定パネルを表示
     showSettingsPanel(x, y) {
-        console.log('showSettingsPanel呼び出し:', x, y);
         const panel = document.getElementById('atcoder-theme-settings');
         if (!panel) {
-            console.error('設定パネルが見つかりません');
             return;
         }
 
@@ -414,7 +410,6 @@ export class ThemeManager {
         panel.style.setProperty('top', `${top}px`, 'important');
         panel.style.setProperty('right', 'auto', 'important');
         panel.classList.add('visible');
-        console.log('パネル表示:', left, top);
     }
 
     // 設定パネルを非表示
