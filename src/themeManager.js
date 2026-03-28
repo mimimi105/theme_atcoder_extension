@@ -325,6 +325,9 @@ export class ThemeManager {
                     transform: translateY(0) !important;
                     box-shadow: 0 2px 4px rgba(76, 175, 80, 0.3) !important;
                 }
+                #atcoder-theme-settings .select2.select2-container.select2-container--bootstrap {
+                    display: none !important;
+                }
             </style>
             <label for="theme-selector">テーマ設定:</label>
             <select id="theme-selector">
