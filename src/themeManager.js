@@ -230,59 +230,102 @@ export class ThemeManager {
                     position: fixed !important;
                     top: 10px !important;
                     right: 10px !important;
-                    background: white !important;
-                    border: 1px solid #ccc !important;
-                    border-radius: 4px !important;
-                    padding: 10px !important;
-                    box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
+                    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%) !important;
+                    border: none !important;
+                    border-radius: 12px !important;
+                    padding: 14px !important;
+                    box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.08) !important;
                     z-index: 10000 !important;
                     font-family: 'Noto Sans', 'Noto Color Emoji', system-ui, -apple-system, sans-serif !important;
-                    min-width: 200px !important;
+                    min-width: 240px !important;
                     display: none !important;
+                    backdrop-filter: blur(10px) !important;
                 }
                 #atcoder-theme-settings.visible {
                     display: block !important;
+                    animation: slideIn 0.2s ease-out !important;
+                }
+                @keyframes slideIn {
+                    from {
+                        opacity: 0;
+                        transform: translateY(-10px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
                 }
                 #atcoder-theme-settings * {
                     all: revert !important;
                 }
                 #atcoder-theme-settings label {
                     display: block !important;
-                    margin: 0 0 5px 0 !important;
+                    margin: 0 0 8px 0 !important;
                     padding: 0 !important;
-                    font-size: 12px !important;
-                    font-weight: normal !important;
-                    color: #333 !important;
+                    font-size: 13px !important;
+                    font-weight: 600 !important;
+                    color: #2c3e50 !important;
                     line-height: normal !important;
+                    letter-spacing: 0.3px !important;
                 }
                 #atcoder-theme-settings select {
                     display: block !important;
                     width: 100% !important;
                     margin: 0 !important;
-                    padding: 4px 8px !important;
+                    padding: 10px 12px !important;
                     font-size: 14px !important;
+                    font-family: 'Noto Sans', 'Noto Color Emoji', system-ui, -apple-system, sans-serif !important;
                     line-height: normal !important;
-                    color: #333 !important;
+                    color: #2c3e50 !important;
                     background: white !important;
-                    border: 1px solid #ccc !important;
+                    border: 2px solid #e1e8ed !important;
+                    border-radius: 8px !important;
                     box-sizing: border-box !important;
+                    cursor: pointer !important;
+                    transition: all 0.2s ease !important;
+                    appearance: none !important;
+                    -webkit-appearance: none !important;
+                    -moz-appearance: none !important;
+                    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232c3e50' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e") !important;
+                    background-repeat: no-repeat !important;
+                    background-position: right 8px center !important;
+                    background-size: 20px !important;
+                    padding-right: 36px !important;
+                }
+                #atcoder-theme-settings select:hover {
+                    border-color: #3498db !important;
+                    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1) !important;
+                }
+                #atcoder-theme-settings select:focus {
+                    outline: none !important;
+                    border-color: #3498db !important;
+                    box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.15) !important;
                 }
                 #create-test-btn {
                     display: block !important;
                     width: 100% !important;
-                    margin-top: 10px !important;
-                    padding: 8px !important;
-                    background: #4CAF50 !important;
+                    margin-top: 12px !important;
+                    padding: 10px !important;
+                    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%) !important;
                     color: white !important;
                     border: none !important;
-                    border-radius: 4px !important;
+                    border-radius: 8px !important;
                     cursor: pointer !important;
-                    font-size: 12px !important;
-                    font-weight: bold !important;
+                    font-size: 13px !important;
+                    font-weight: 600 !important;
+                    font-family: 'Noto Sans', 'Noto Color Emoji', system-ui, -apple-system, sans-serif !important;
                     line-height: normal !important;
+                    transition: all 0.2s ease !important;
+                    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3) !important;
                 }
                 #create-test-btn:hover {
-                    background: #45a049 !important;
+                    background: linear-gradient(135deg, #45a049 0%, #3d8b40 100%) !important;
+                    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4) !important;
+                    transform: translateY(-1px) !important;
+                }
+                #create-test-btn:active {
+                    transform: translateY(0) !important;
+                    box-shadow: 0 2px 4px rgba(76, 175, 80, 0.3) !important;
                 }
             </style>
             <label for="theme-selector">テーマ設定:</label>
