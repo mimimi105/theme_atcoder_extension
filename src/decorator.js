@@ -8,10 +8,6 @@ export class Decorator {
     applyDecoration() {
         const theme = this.themeManager.getCurrentTheme();
 
-        if (!theme) {
-            return;  // テーマがオフの場合は何もしない
-        }
-
         // まず、既に装飾済みの要素からクラスを除去
         const decoratedElements = document.querySelectorAll('[class*="theme-"]');
         decoratedElements.forEach(element => {
@@ -30,10 +26,22 @@ export class Decorator {
         statusElements.forEach(element => {
             const text = element.textContent.trim().toUpperCase();
 
-            // テーマのステータスクラスマッピングを使用
-            if (theme.statusClasses && theme.statusClasses[text]) {
+            // テーマがオンの場合のみ装飾を適用
+            if (theme && theme.statusClasses && theme.statusClasses[text]) {
                 const classes = theme.statusClasses[text];
                 element.classList.add(...classes);
+            }
+
+            // 右クリックイベントは常に追加（テーマオフの時も設定変更できるように）
+            if (!element.hasAttribute('data-context-menu-added')) {
+                element.addEventListener('contextmenu', (event) => {
+                    console.log('右クリックイベント発火:', event.target.textContent);
+                    event.preventDefault();
+                    event.stopPropagation();
+                    this.themeManager.showSettingsPanel(event.clientX, event.clientY);
+                });
+                element.setAttribute('data-context-menu-added', 'true');
+                console.log('右クリックリスナー追加:', text);
             }
         });
     }

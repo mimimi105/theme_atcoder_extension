@@ -218,16 +218,21 @@ export class ThemeManager {
         panel.innerHTML = `
             <style>
                 #atcoder-theme-settings {
-                    all: initial !important;
                     position: fixed !important;
                     top: 10px !important;
                     right: 10px !important;
                     background: white !important;
                     border: 1px solid #ccc !important;
+                    border-radius: 4px !important;
                     padding: 10px !important;
-                    box-shadow: 0 2px 10px rgba(0,0,0,0.2) !important;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
                     z-index: 10000 !important;
                     font-family: system-ui, -apple-system, sans-serif !important;
+                    min-width: 200px !important;
+                    display: none !important;
+                }
+                #atcoder-theme-settings.visible {
+                    display: block !important;
                 }
                 #atcoder-theme-settings * {
                     all: revert !important;
@@ -316,6 +321,55 @@ export class ThemeManager {
                     }, 100);
                 });
             }
+        }
+
+        // 外側クリックで閉じる
+        document.addEventListener('click', (e) => {
+            if (!panel.contains(e.target)) {
+                this.hideSettingsPanel();
+            }
+        });
+    }
+
+    // 設定パネルを表示
+    showSettingsPanel(x, y) {
+        console.log('showSettingsPanel呼び出し:', x, y);
+        const panel = document.getElementById('atcoder-theme-settings');
+        if (!panel) {
+            console.error('設定パネルが見つかりません');
+            return;
+        }
+
+        // 画面の端を超えないように位置調整
+        const panelWidth = 220;  // min-width + padding
+        const panelHeight = 100;  // 概算の高さ
+
+        let left = x;
+        let top = y;
+
+        // 右端を超える場合は左に表示
+        if (left + panelWidth > window.innerWidth) {
+            left = window.innerWidth - panelWidth - 10;
+        }
+
+        // 下端を超える場合は上に表示
+        if (top + panelHeight > window.innerHeight) {
+            top = window.innerHeight - panelHeight - 10;
+        }
+
+        // 位置を設定してから表示
+        panel.style.setProperty('left', `${left}px`, 'important');
+        panel.style.setProperty('top', `${top}px`, 'important');
+        panel.style.setProperty('right', 'auto', 'important');
+        panel.classList.add('visible');
+        console.log('パネル表示:', left, top);
+    }
+
+    // 設定パネルを非表示
+    hideSettingsPanel() {
+        const panel = document.getElementById('atcoder-theme-settings');
+        if (panel) {
+            panel.classList.remove('visible');
         }
     }
 }
