@@ -218,32 +218,57 @@ export class ThemeManager {
         panel.innerHTML = `
             <style>
                 #atcoder-theme-settings {
-                    position: fixed;
-                    top: 10px;
-                    right: 10px;
-                    background: white;
-                    border: 2px solid #ccc;
-                    border-radius: 8px;
-                    padding: 10px;
-                    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-                    z-index: 10000;
-                    font-family: sans-serif;
+                    all: initial !important;
+                    position: fixed !important;
+                    top: 10px !important;
+                    right: 10px !important;
+                    background: white !important;
+                    border: 1px solid #ccc !important;
+                    padding: 10px !important;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.2) !important;
+                    z-index: 10000 !important;
+                    font-family: system-ui, -apple-system, sans-serif !important;
+                }
+                #atcoder-theme-settings * {
+                    all: revert !important;
                 }
                 #atcoder-theme-settings label {
-                    display: block;
-                    margin-bottom: 5px;
-                    font-weight: bold;
-                    font-size: 12px;
+                    display: block !important;
+                    margin: 0 0 5px 0 !important;
+                    padding: 0 !important;
+                    font-size: 12px !important;
+                    font-weight: normal !important;
+                    color: #333 !important;
+                    line-height: normal !important;
                 }
                 #atcoder-theme-settings select {
-                    width: 100%;
-                    padding: 5px;
-                    border: 1px solid #ccc;
-                    border-radius: 4px;
-                    font-size: 12px;
+                    display: block !important;
+                    width: 100% !important;
+                    margin: 0 !important;
+                    padding: 4px 8px !important;
+                    font-size: 14px !important;
+                    line-height: normal !important;
+                    color: #333 !important;
+                    background: white !important;
+                    border: 1px solid #ccc !important;
+                    box-sizing: border-box !important;
+                }
+                #create-test-btn {
+                    display: block !important;
+                    width: 100% !important;
+                    margin-top: 10px !important;
+                    padding: 8px !important;
+                    background: #4CAF50 !important;
+                    color: white !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                    cursor: pointer !important;
+                    font-size: 12px !important;
+                    font-weight: bold !important;
+                    line-height: normal !important;
                 }
                 #create-test-btn:hover {
-                    background: #45a049;
+                    background: #45a049 !important;
                 }
             </style>
             <label for="theme-selector">テーマ設定:</label>
