@@ -16,6 +16,7 @@ export const springTheme = {
             border-radius: 20px !important;
             padding: 6px 10px !important;
             font-weight: bold !important;
+            font-family: 'Noto Sans', 'Noto Color Emoji', sans-serif !important;
             text-shadow: 0 0 3px rgba(150, 110, 60, 0.25), 0 0 6px rgba(150, 110, 60, 0.15), 2px 2px 4px rgba(255, 153, 51, 0.3) !important;
             box-shadow: 0 0 15px rgba(255, 179, 71, 0.25), 0 0 8px rgba(255, 255, 255, 0.5) inset, 0 1px 4px rgba(255, 250, 230, 0.3) !important;
             animation: orangeGlow 3s ease-in-out infinite alternate !important;
@@ -29,6 +30,7 @@ export const springTheme = {
             border-radius: 20px !important;
             padding: 6px 10px !important;
             font-weight: bold !important;
+            font-family: 'Noto Sans', 'Noto Color Emoji', sans-serif !important;
             text-shadow: 0 0 3px rgba(150, 100, 100, 0.25), 0 0 6px rgba(150, 100, 100, 0.15), 2px 2px 4px rgba(255, 179, 186, 0.3) !important;
             box-shadow: 0 0 15px rgba(255, 179, 186, 0.25), 0 0 8px rgba(255, 255, 255, 0.5) inset, 0 1px 4px rgba(255, 240, 240, 0.3) !important;
             animation: peachGlow 3s ease-in-out infinite alternate !important;
@@ -42,6 +44,7 @@ export const springTheme = {
             border-radius: 20px !important;
             padding: 6px 10px !important;
             font-weight: bold !important;
+            font-family: 'Noto Sans', 'Noto Color Emoji', sans-serif !important;
             text-shadow: 0 0 3px rgba(90, 80, 120, 0.3), 0 0 6px rgba(90, 80, 120, 0.2), 2px 2px 4px rgba(217, 179, 255, 0.3) !important;
             box-shadow: 0 0 15px rgba(217, 179, 255, 0.25), 0 0 8px rgba(255, 255, 255, 0.5) inset, 0 1px 4px rgba(245, 240, 255, 0.3) !important;
             animation: lavenderGlow 3s ease-in-out infinite alternate !important;
@@ -55,6 +58,7 @@ export const springTheme = {
             border-radius: 20px !important;
             padding: 6px 10px !important;
             font-weight: bold !important;
+            font-family: 'Noto Sans', 'Noto Color Emoji', sans-serif !important;
             text-shadow: 0 0 3px rgba(140, 90, 100, 0.3), 0 0 6px rgba(140, 90, 100, 0.2), 2px 2px 4px rgba(255, 143, 163, 0.3) !important;
             box-shadow: 0 0 15px rgba(255, 143, 163, 0.25), 0 0 8px rgba(255, 255, 255, 0.5) inset, 0 1px 4px rgba(255, 240, 245, 0.3) !important;
             animation: roseGlow 3s ease-in-out infinite alternate !important;
@@ -68,6 +72,7 @@ export const springTheme = {
             border-radius: 20px !important;
             padding: 6px 10px !important;
             font-weight: bold !important;
+            font-family: 'Noto Sans', 'Noto Color Emoji', sans-serif !important;
             text-shadow: 0 0 3px rgba(100, 85, 70, 0.25), 0 0 6px rgba(100, 85, 70, 0.15), 2px 2px 4px rgba(139, 115, 85, 0.3) !important;
             box-shadow: 0 0 15px rgba(201, 183, 156, 0.25), 0 0 8px rgba(255, 255, 255, 0.5) inset, 0 1px 4px rgba(245, 237, 227, 0.3) !important;
             animation: woodGlow 3s ease-in-out infinite alternate !important;
@@ -81,6 +86,7 @@ export const springTheme = {
             border-radius: 20px !important;
             padding: 6px 10px !important;
             font-weight: bold !important;
+            font-family: 'Noto Sans', 'Noto Color Emoji', sans-serif !important;
             text-shadow: 0 0 3px rgba(60, 100, 90, 0.25), 0 0 6px rgba(60, 100, 90, 0.15), 2px 2px 4px rgba(61, 217, 198, 0.3) !important;
             box-shadow: 0 0 15px rgba(61, 217, 198, 0.25), 0 0 8px rgba(255, 255, 255, 0.5) inset, 0 1px 4px rgba(224, 247, 250, 0.3) !important;
             animation: springGlow 3s ease-in-out infinite alternate !important;

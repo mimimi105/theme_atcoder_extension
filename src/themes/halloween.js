@@ -16,6 +16,7 @@ export const halloweenTheme = {
             border-radius: 15px !important;
             padding: 6px 10px !important;
             font-weight: bold !important;
+            font-family: 'Noto Sans', 'Noto Color Emoji', sans-serif !important;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5) !important;
             box-shadow: 0 0 20px rgba(255, 107, 53, 0.6) !important;
             animation: halloweenGlow 2s ease-in-out infinite alternate !important;
@@ -29,6 +30,7 @@ export const halloweenTheme = {
             border-radius: 15px !important;
             padding: 6px 10px !important;
             font-weight: bold !important;
+            font-family: 'Noto Sans', 'Noto Color Emoji', sans-serif !important;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5) !important;
             box-shadow: 0 0 20px rgba(255, 69, 0, 0.6) !important;
             animation: halloweenGlow 2s ease-in-out infinite alternate !important;
@@ -42,6 +44,7 @@ export const halloweenTheme = {
             border-radius: 15px !important;
             padding: 6px 10px !important;
             font-weight: bold !important;
+            font-family: 'Noto Sans', 'Noto Color Emoji', sans-serif !important;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5) !important;
             box-shadow: 0 0 20px rgba(138, 43, 226, 0.6) !important;
             animation: halloweenGlow 2s ease-in-out infinite alternate !important;
@@ -55,6 +58,7 @@ export const halloweenTheme = {
             border-radius: 15px !important;
             padding: 6px 10px !important;
             font-weight: bold !important;
+            font-family: 'Noto Sans', 'Noto Color Emoji', sans-serif !important;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5) !important;
             box-shadow: 0 0 20px rgba(220, 20, 60, 0.6) !important;
             animation: halloweenGlow 2s ease-in-out infinite alternate !important;
@@ -68,6 +72,7 @@ export const halloweenTheme = {
             border-radius: 15px !important;
             padding: 6px 10px !important;
             font-weight: bold !important;
+            font-family: 'Noto Sans', 'Noto Color Emoji', sans-serif !important;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5) !important;
             box-shadow: 0 0 20px rgba(112, 128, 144, 0.6) !important;
             animation: halloweenGlow 2s ease-in-out infinite alternate !important;
@@ -81,6 +86,7 @@ export const halloweenTheme = {
             border-radius: 15px !important;
             padding: 6px 10px !important;
             font-weight: bold !important;
+            font-family: 'Noto Sans', 'Noto Color Emoji', sans-serif !important;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5) !important;
             box-shadow: 0 0 20px rgba(34, 139, 34, 0.6) !important;
             animation: halloweenGlow 2s ease-in-out infinite alternate !important;

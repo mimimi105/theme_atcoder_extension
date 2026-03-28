@@ -90,6 +90,15 @@ export class ThemeManager {
 
         this.currentTheme = theme;
 
+        // Google Fontsを読み込む（初回のみ）
+        if (!document.getElementById('google-fonts-noto')) {
+            const link = document.createElement('link');
+            link.id = 'google-fonts-noto';
+            link.rel = 'stylesheet';
+            link.href = 'https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap';
+            document.head.appendChild(link);
+        }
+
         if (!theme) {
             return;  // テーマがオフの場合
         }
@@ -227,7 +236,7 @@ export class ThemeManager {
                     padding: 10px !important;
                     box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
                     z-index: 10000 !important;
-                    font-family: system-ui, -apple-system, sans-serif !important;
+                    font-family: 'Noto Sans', 'Noto Color Emoji', system-ui, -apple-system, sans-serif !important;
                     min-width: 200px !important;
                     display: none !important;
                 }
