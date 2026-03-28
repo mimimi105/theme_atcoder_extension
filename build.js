@@ -22,7 +22,7 @@ const scriptName = ENV === 'dev' ? 'Theme-AtCoder - dev' : 'Theme-AtCoder';
 const header = `// ==UserScript==
 // @name         ${scriptName}
 // @namespace    https://github.com/mimimi105/theme_atcoder_extension
-// @version      2.0.1
+// @version      2.0.3
 // @description  AtCoderのWAやTLEの表示をテーマ別に装飾する拡張機能（ハロウィン、春など）
 // @author       mimimi105
 // @match        https://atcoder.jp/*
